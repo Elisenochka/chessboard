@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+ <p>
+  <button id="create" onclick="addTable();" style="background-color: lemon; margin: 5px 15px">Create table</button>
+    <script>
+
+    function addTable() {
+      var body = document.querySelector("body"),
+          tableWidth = document.getElementById("table-width"),
+          tableHeight = document.getElementById("table-height"),
+          width = 1000,
+          height = 1000,
+          tr = "",
+          td = "",
+          firstTable = document.querySelector("table");
+      console.log(width);
+      console.log(height);
+
+      table = document.createElement("table"),
+        table.setAttribute("border", "2px");
+table.style.borderCollapse = 'collapse';
+      table.setAttribute("width", width);
+      table.setAttribute("height", height);
+	var letters = ['A','B','C','D','E','F','G','H'];
+      for (var i = 8; i >0; i--) {
+        tr = document.createElement("tr");
+	        for (var j = 0; j < letters.length; j++) {
+	
+td = document.createElement("td");
+td.id = letters[j]+i;
+if((j+i)%2!=0) {
+td.style.backgroundColor = 'gray';
+td.setAttribute("color","white");
+}
+else{
+td.style.backgroundColor = 'white';
+td.setAttribute("color","black");
+}
+      text = document.createTextNode(letters[j] + i);
+	td.setAttribute("align","center");
+td.setAttribute("height",100);
+chesspiece = document.createElement("IMG");
+
+if(i==1||i==2){
+chesspiece.src = '/Ushan/Programming/7/chesspieces/'+td.id+'.png';
+chesspiece.id = 'w'+td.id;
+}
+if(i==7||i==8){
+chesspiece.src = '/Ushan/Programming/7/chesspieces/'+td.id+'.png';
+chesspiece.id = 'b'+td.id;
+}
+		td.appendChild(chesspiece);
+          td.appendChild(text);
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+	      }
+      console.log(tr);
+      console.log(td);
+      if (firstTable == null) {
+        return body.appendChild(table);
+      } else {
+        var newTable = body.appendChild(table);
+        return document.body.replaceChild(newTable, firstTable);
+      }
+    }
+
+   function move(){
+
+}
+</script>
+</body>
+</html>
